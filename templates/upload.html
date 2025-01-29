@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <form method="POST" enctype="multipart/form-data" action="/upload">
+        <input type="file" name="image" required>
+        <button type="submit">Upload</button>
+    </form>
+    <h2>Uploaded Images</h2>
+    <ul>
+        {% for image in images %}
+        <li><a href="{{ image.url }}">{{ image.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
