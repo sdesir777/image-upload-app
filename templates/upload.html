@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Upload</title>
+    <title>Image Upload App</title>
 </head>
 <body>
     <h1>Upload an Image</h1>
-    <form method="POST" enctype="multipart/form-data" action="/upload">
-        <input type="file" name="image" required>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image">
         <button type="submit">Upload</button>
     </form>
+
     <h2>Uploaded Images</h2>
     <ul>
         {% for image in images %}
-        <li><a href="{{ image.url }}">{{ image.name }}</a></li>
+        <li>
+            <img src="{{ url_for('serve_file', filename=image) }}" alt="{{ image }}" width="300">
+            <p><strong>Title:</strong> {{ descriptions.get(image, {}).get('title', 'No Title Generated') }}</p>
+            <p><strong>Description:</strong> {{ descriptions.get(image, {}).get('description', 'No Description Available') }}</p>
+        </li>
         {% endfor %}
     </ul>
 </body>

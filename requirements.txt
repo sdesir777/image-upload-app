@@ -1,4 +1,8 @@
 flask 
 google-cloud-storage
-gunicorn
+google-generativeai
+google-cloud-aiplatform
 google-auth
+google-auth-oauthlib
+google-auth-httplib2
+gunicorn
