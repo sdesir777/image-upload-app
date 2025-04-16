@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload App</title>
+    <style>
+        body {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Uploaded Images</h2>
+    <ul>
+        {% for image in images %}
+        <li>
+            <img src="{{ url_for('serve_file', filename=image) }}" alt="{{ image }}" width="300">
+            <p><strong>Title:</strong> {{ descriptions.get(image, {}).get('title', 'No Title Generated') }}</p>
+            <p><strong>Description:</strong> {{ descriptions.get(image, {}).get('description', 'No Description Available') }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
